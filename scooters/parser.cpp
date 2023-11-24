@@ -1,6 +1,7 @@
 #include "parser.h"
 #include <fstream>
 #include "json/json.h"
+#include <iostream>
 
 input parse_json(std::string filename)
 {
@@ -44,4 +45,24 @@ input parse_json(std::string filename)
 	};
 
 	return {g, lim, position};
+}
+
+void print_path(path p)
+{
+	std::cout << p.gain << std::endl;
+	for (size_t i : p.path)
+		std::cout << i << ' ';
+	std::cout << std::endl;
+}
+
+void print_destribution(std::map<int, int> d)
+{
+	for (auto& i : d)
+		std::cout << i.first << ' ' << i.second << std::endl;
+}
+
+void print(path_generation_result result)
+{
+	print_path(result.best);
+	print_destribution(result.gain_cnt_destribution);
 }

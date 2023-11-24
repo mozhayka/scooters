@@ -12,12 +12,8 @@ int main()
 
 	path_generator gen(i.g);
 	
-	auto p = gen.gen_x_times(i.lim.time_left, i.lim.capacity, 1000);
-
-	std::cout << p.gain << std::endl;
-	for (size_t i : p.path)
-		std::cout << i << ' ';
-	std::cout << std::endl;
+	auto ans = gen.gen_x_times(i.lim, 1000);
+	print(ans);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
