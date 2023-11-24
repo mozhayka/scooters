@@ -127,11 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="generator.cpp" />
     <ClCompile Include="parser.cpp" />
+    <ClCompile Include="random.cpp" />
     <ClCompile Include="scooters.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="generator.h" />
     <ClInclude Include="parser.h" />
+    <ClInclude Include="random.h" />
     <ClInclude Include="structures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

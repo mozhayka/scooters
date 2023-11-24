@@ -3,14 +3,21 @@
 
 #include <iostream>
 #include "parser.h"
+#include "generator.h"
 
 int main()
 {
     std::string filename = "C:/Users/mozha/source/repos/scooters/input/data_1.json";
     input i = parse_json(filename);
-    std::cout << i.lim.capacity << std::endl;
-    std::cout << i.g.N << std::endl;
-    std::cout << i.position[0].x << " " << i.position[0].y << std::endl;
+
+	path_generator gen(i.g);
+	
+	auto p = gen.gen_x_times(i.lim.time_left, i.lim.capacity, 1000);
+
+	std::cout << p.gain << std::endl;
+	for (size_t i : p.path)
+		std::cout << i << ' ';
+	std::cout << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
