@@ -29,10 +29,15 @@ struct path
 	path(std::vector<size_t> v, graph g, limits lim) : vertices(v)
 	{
 		gain = 0;
-		size_t from = v[0];
+		int sum_dist = 0;
+		size_t from = 0;
 		for (size_t to : v)
 		{
-			gain += g.prio[to] - lim.penalty * g.dist[from][to];
+			gain += g.prio[to];
+			sum_dist += g.dist[from][to];
+			from = to;
 		}
+		sum_dist += g.dist[from][0];
+		gain -= lim.penalty * sum_dist;
 	}
 };

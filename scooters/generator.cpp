@@ -11,7 +11,7 @@ path path_generator::gen(limits lim)
 	size_t from = 0;
 
 	std::vector<size_t> way;
-	way.push_back(from);
+	// way.push_back(from);
 	std::vector<bool> used(g.N, false);
 	used[from] = true;
 
