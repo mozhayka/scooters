@@ -2,18 +2,29 @@
 //
 
 #include <iostream>
+#include <format>
 #include "parser.h"
+#include "output.h"
 #include "generator.h"
+
 
 int main()
 {
-    std::string filename = "C:/Users/mozha/source/repos/scooters/input/data_1.json";
-    input i = parse_json(filename);
+	std::string PATH = "C:/Users/mozha/source/repos/scooters/";
+	int files_cnt = 5;
 
-	path_generator gen(i.g);
+	for (int i = 1; i <= files_cnt; i++)
+	{
+		std::string input_file = std::format("{}input/input{}.txt", PATH, i);
+		std::string output_file = std::format("{}output/output{}.txt", PATH, i);
+		input in = parse_txt(input_file);
+
+		path_generator gen(in.g);
 	
-	auto ans = gen.gen_x_times(i.lim, 1000);
-	print(ans);
+		auto ans = gen.gen_x_times(in.lim, 10000);
+		save_path(ans, output_file);
+		print_path(ans);
+	}
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

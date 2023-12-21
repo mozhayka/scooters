@@ -3,7 +3,12 @@
 #include "structures.h"
 #include "generator.h"
 
+struct input
+{
+	graph g;
+	limits lim;
+	std::vector<coordinates> position;
+};
+
 input parse_json(std::string filename);
-void print_path(path p);
-void print_destribution(std::map<int, int> d);
-void print(path_generation_result result);
+input parse_txt(std::string filename);

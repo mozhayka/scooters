@@ -13,19 +13,34 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\IO">
+      <UniqueIdentifier>{71494ecb-7e98-4bdd-a438-cd09bf145e19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algo">
+      <UniqueIdentifier>{4bbd893f-c051-4ae7-ac48-6b4c00cc9a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IO">
+      <UniqueIdentifier>{2cdb3acb-6830-4b01-b5ac-69653a95da29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Algo">
+      <UniqueIdentifier>{6249147f-fb64-4635-a7a2-e1bd7fa3e8a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="scooters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="parser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="random.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\IO</Filter>
     </ClCompile>
     <ClCompile Include="generator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Algo</Filter>
+    </ClCompile>
+    <ClCompile Include="random.cpp">
+      <Filter>Source Files\Algo</Filter>
+    </ClCompile>
+    <ClCompile Include="output.cpp">
+      <Filter>Source Files\IO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -33,13 +48,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="random.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\IO</Filter>
     </ClInclude>
     <ClInclude Include="generator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>Header Files\Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="output.h">
+      <Filter>Header Files\IO</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

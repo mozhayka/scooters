@@ -41,28 +41,63 @@ input parse_json(std::string filename)
 	limits lim = {
 		data["capacity"].asInt(),
 		data["time_left"].asInt(),
-		data["penalty"].asInt(),
+		data["penalty"].asDouble(),
 	};
 
 	return {g, lim, position};
 }
 
-void print_path(path p)
+input parse_txt(std::string filename)
 {
-	std::cout << p.gain << std::endl;
-	for (size_t i : p.path)
-		std::cout << i << ' ';
-	std::cout << std::endl;
-}
+	std::ifstream in(filename);
+	if (!in)
+		throw new std::runtime_error("Cannot open file " + filename);
 
-void print_destribution(std::map<int, int> d)
-{
-	for (auto& i : d)
-		std::cout << i.first << ' ' << i.second << std::endl;
-}
+	int n;
+	in >> n;
+	n++;
 
-void print(path_generation_result result)
-{
-	print_path(result.best);
-	print_destribution(result.gain_cnt_destribution);
+	std::vector<int> prio(n, 0);
+	std::vector<std::vector<int>> dist(n, std::vector<int>(n, 0));
+	std::vector<coordinates> position(n);
+
+
+	for (int i = 0; i < n; i++)
+	{
+		double x, y;
+		int p;
+		in >> x >> y >> p;
+		prio[i] = p;
+		position[i] = { x, y };
+	}
+
+	for (int from = 0; from < n; from++)
+	{
+		for (int to = 0; to < n; to++)
+		{
+			int time_dist;
+			in >> time_dist;
+			dist[from][to] = time_dist;
+		}
+	}
+
+	graph g = {
+		n,
+		prio,
+		dist
+	};
+
+	int capacity, time_left;
+	double penalty;
+	in >> capacity;
+	in >> time_left;
+	in >> penalty;
+
+	limits lim = {
+		capacity,
+		time_left,
+		penalty,
+	};
+
+	return { g, lim, position };
 }

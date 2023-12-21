@@ -13,7 +13,7 @@ struct limits
 {
 	int capacity;
 	int time_left;
-	int penalty;
+	double penalty;
 };
 
 struct coordinates
@@ -21,15 +21,18 @@ struct coordinates
 	double x, y;
 };
 
-struct input
-{
-	graph g;
-	limits lim;
-	std::vector<coordinates> position;
-};
-
 struct path
 {
-	std::vector<size_t> path;
-	int gain;
+	std::vector<size_t> vertices;
+	double gain;
+
+	path(std::vector<size_t> v, graph g, limits lim) : vertices(v)
+	{
+		gain = 0;
+		size_t from = v[0];
+		for (size_t to : v)
+		{
+			gain += g.prio[to] - lim.penalty * g.dist[from][to];
+		}
+	}
 };
