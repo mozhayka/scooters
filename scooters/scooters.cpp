@@ -24,6 +24,8 @@ int main()
 		auto ans = gen.gen_x_times(in.lim, 10000);
 		save_path(ans, output_file);
 		print_path(ans);
+
+		save_path_coordinates(in, ans, std::format("{}output_coordinates/output_coordinates_{}.txt", PATH, i));
 	}
 }
 
